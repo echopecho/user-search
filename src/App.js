@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer, useMemo } from "react";
+import Search from "./components/search/Search";
+import { initialState, reducer } from "./reducer";
+import { AppContext } from "./context";
+import "./App.css";
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const contextValue = useMemo(() => {
+    return { state, dispatch };
+  }, [state, dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={contextValue}>
+      <div className="App">
+        <Search />
+      </div>
+    </AppContext.Provider>
   );
 }
 
