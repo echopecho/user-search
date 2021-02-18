@@ -1,15 +1,23 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../../context";
-import { fetchData } from '../../util/data';
+import { fetchData } from "../../util/data";
+import { LOADING, SUCCESS, FAILURE } from "../../util/dispatch-types";
 
 function Search() {
   const [query, setQuery] = useState("");
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await fetchData(query)
-    console.log(data)
+    dispatch({ type: LOADING });
+    try {
+      const data = await fetchData(query);
+      console.log(data);
+      dispatch({ type: SUCCESS, payload: data });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: FAILURE, payload: err.message });
+    }
   };
 
   return (

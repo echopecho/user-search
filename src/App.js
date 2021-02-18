@@ -1,5 +1,6 @@
 import React, { useReducer, useMemo } from "react";
 import Search from "./components/search/Search";
+import UserList from "./components/user-list/UserList";
 import { initialState, reducer } from "./reducer";
 import { AppContext } from "./context";
 import "./App.css";
@@ -14,6 +15,7 @@ function App() {
     <AppContext.Provider value={contextValue}>
       <div className="App">
         <Search />
+        <UserList />
       </div>
     </AppContext.Provider>
   );
