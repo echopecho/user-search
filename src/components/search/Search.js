@@ -1,13 +1,15 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../../context";
+import { fetchData } from '../../util/data';
 
 function Search() {
   const [query, setQuery] = useState("");
   const { state, dispatch } = useContext(AppContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(query);
+    const data = await fetchData(query)
+    console.log(data)
   };
 
   return (
