@@ -1,12 +1,24 @@
 import React from "react";
+import { UserCardContainer } from './style';
 
 function UserCard({ user }) {
   return (
-    <div>
+    <UserCardContainer>
       <img src={user.avatar_url} alt="user" />
-      <p>{user.name}</p>
-      <p>{user.bio}</p>
-    </div>
+      <div className="username">
+        <a href={user.html_url} target="_blank" rel="noreferrer">{user.name}</a>
+        <span>{user.login}</span>
+        <span className="followers">{user.followers} Followers</span>
+      </div>
+      <p className="location">{user.location}</p>
+      <hr />
+      <p className="bio">{user.bio}</p>
+      <div className="contact">
+        {user.company && <span>{user.company}</span>}
+        {user.email && <span>{user.email}</span>}
+        {user.blog && <a href={user.blog} target="_blank" rel="noreferrer">{user.blog}</a>}
+      </div>
+    </UserCardContainer>
   );
 }
 

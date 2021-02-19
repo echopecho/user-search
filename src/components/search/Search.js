@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../../context";
-import { fetchData } from "../../util/data";
-import { LOADING, SUCCESS, FAILURE } from "../../util/dispatch-types";
+// import { fetchData } from "../../util/data";
+import { SEARCH } from "../../util/dispatch-types";
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -9,15 +9,8 @@ function Search() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: LOADING });
-    try {
-      const data = await fetchData(query);
-      console.log(data);
-      dispatch({ type: SUCCESS, payload: data });
-    } catch (err) {
-      console.log(err);
-      dispatch({ type: FAILURE, payload: err.message });
-    }
+    console.log("submit fired")
+    dispatch({ type: SEARCH, payload: query });
   };
 
   return (
