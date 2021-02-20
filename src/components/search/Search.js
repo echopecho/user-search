@@ -16,13 +16,16 @@ function Search() {
 
   return (
     <SearchContainer>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)} data-testid="search-form">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          data-testid="search-input"
         />
-        <Button type="submit">Search</Button>
+        <Button type="submit" data-testid="search-btn">
+          Search
+        </Button>
       </form>
     </SearchContainer>
   );
