@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const UserCardContainer = styled.div`
   border-top: 1px solid #000;
@@ -7,6 +7,7 @@ export const UserCardContainer = styled.div`
   padding-right: 10px;
   position: relative;
   min-height: 120px;
+  background-color: rgb(219, 214, 214);
 
   img {
     position: absolute;
@@ -27,7 +28,7 @@ export const UserCardContainer = styled.div`
   }
 
   .location {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   hr {
@@ -36,14 +37,14 @@ export const UserCardContainer = styled.div`
 
   .bio {
     padding: 0 10px;
-    font-size: .9rem;
+    font-size: 0.9rem;
     line-height: 1rem;
     margin-top: 5px;
   }
 
   .contact {
     width: 60%;
-    font-size: .7rem;
+    font-size: 0.7rem;
     margin-top: 5px;
     /* position: absolute;
     bottom: 10px; */
@@ -51,4 +52,4 @@ export const UserCardContainer = styled.div`
       margin-right: 2%;
     }
   }
-`
+`;
