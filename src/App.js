@@ -14,7 +14,6 @@ function App() {
   }, [state, dispatch]);
 
   useEffect(() => {
-    console.log("The query has changed", state.query);
     if(state.query !== '') {
       handleRequest();
     }

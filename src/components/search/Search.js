@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../../context";
-// import { fetchData } from "../../util/data";
 import { SEARCH } from "../../util/dispatch-types";
+import { Button } from '../../shared/style';
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -9,15 +9,15 @@ function Search() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submit fired")
     dispatch({ type: SEARCH, payload: query });
+    setQuery("")
   };
 
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" onChange={(e) => setQuery(e.target.value)} />
-        <button type="submit">Search</button>
+        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
+        <Button type="submit">Search</Button>
       </form>
     </div>
   );

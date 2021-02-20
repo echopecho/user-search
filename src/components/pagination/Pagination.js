@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../context';
 import { PAGINATE } from '../../util/dispatch-types';
+import { PaginationContainer } from './style'
+import { Button } from '../../shared/style'
 
 function Pagination() {
   const { state, dispatch } = useContext(AppContext);
@@ -10,11 +12,23 @@ function Pagination() {
     dispatch({ type: PAGINATE, payload: dir });
   }
   return (
-    <div>
-      <button onClick={() => paginate(-1)} disabled={currentPage === 1}>Prev</button>
-      <button onClick={() => paginate(1)} disabled={currentPage + 10 >= total_count}>Next</button>
-      <p>Total results: {total_count}</p>
-    </div>
+    <PaginationContainer className="pagination-container">
+      <p className="results-display">Total results: {total_count}</p>
+      <div className="controls">
+        <Button 
+          onClick={() => paginate(-1)} 
+          disabled={currentPage === 1}
+        >
+          Prev
+        </Button>
+        <Button 
+          onClick={() => paginate(1)} 
+          disabled={currentPage * 10 >= total_count}
+        >
+          Next
+        </Button>
+      </div>
+    </PaginationContainer>
   )
 }
 
